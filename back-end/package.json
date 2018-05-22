@@ -2,8 +2,7 @@
   "name": "back-end",
   "version": "1.0.0",
   "scripts": {
-    "server": "nodemon server.js",
-    "insert": "concurrently \"node .\\insert_products.js\" \"node .\\insert_advertisers.js\""
+    "server": "nodemon server.js"
   },
   "dependencies": {
     "csv": "^3.1.0",
@@ -11,7 +10,5 @@
     "sqlite3": "^4.0.0",
     "yarn": "^1.6.0"
   },
-  "devDependencies": {
-    "concurrently": "^3.5.0"
-  }
+  "devDependencies": {}
 }

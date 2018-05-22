@@ -2,6 +2,7 @@
     &--wrapper {
         position: fixed;
         bottom: 0;
+        right: 0;
         margin: 15px 40px;
 
         font-size: 50px;
@@ -9,10 +10,10 @@
         user-select: none;
     }
 
-    &__left-arrow {
+    &__arrow {
         margin:  0 15px;
-    }
-
-    &__right-arrow {
+        &:hover {
+            color: #8e8e8e;
+        }
     }
 }

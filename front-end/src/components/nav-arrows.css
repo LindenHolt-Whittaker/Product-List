@@ -1,10 +1,13 @@
 .nav--wrapper {
   position: fixed;
   bottom: 0;
+  right: 0;
   margin: 15px 40px;
   font-size: 50px;
   cursor: pointer;
   user-select: none; }
 
-.nav__left-arrow {
+.nav__arrow {
   margin: 0 15px; }
+  .nav__arrow:hover {
+    color: #8e8e8e; }

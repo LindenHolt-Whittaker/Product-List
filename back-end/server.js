@@ -19,8 +19,16 @@ app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
+
 app.get('/api/products', (req, res) => {
-  db.all(`SELECT * FROM products WHERE product_id > ${req.query.from} AND product_id <= ${req.query.to}`, (err, rows) => {
+  const query = [
+    'SELECT * FROM unique_products ',
+    'INNER JOIN advertisers ON advertisers.advertiser_id = unique_products.advertiser_id ',
+    `WHERE unique_products.rowid > ${req.query.from} AND unique_products.rowid <= ${req.query.to}`
+  ].join('');
+  
+  db.all(query, (err, rows) => {
     res.send(rows);
+    console.log(rows);
   });
 });

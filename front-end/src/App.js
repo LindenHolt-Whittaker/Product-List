@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import NavArrows from './components/nav-arrows';
 import './App.css';
 
-const productRangeStart = 0;
-const productRangeEnd = 50;
+let productRangeStart = 0;
+const productRange = 30;
 
 class App extends Component {
   state = {
@@ -12,13 +12,32 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.callApi()
-      .then(res => { console.log(res); this.setState({ products: res })})
+    this.getProducts();
+  }
+
+  getProducts(backOrForward = null) {
+    switch(backOrForward) {
+    case 'left':
+      if(productRangeStart - productRange >= 0) {
+        productRangeStart -= productRange;
+        break;
+      } else {
+        return;
+      }
+    case 'right':
+      productRangeStart += productRange;
+      break;
+    default:
+      break;
+    }
+
+    this.getProductsAPI()
+      .then(res => {this.setState({ products: res })})
       .catch(err => console.log(err));
   }
 
-  callApi = async () => {
-    const response = await fetch(`/api/products?from=${productRangeStart}&to=${productRangeEnd}`);
+  getProductsAPI = async () => {
+    const response = await fetch(`/api/products?from=${productRangeStart}&to=${productRangeStart + productRange}`);
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -33,10 +52,26 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        {this.state.products && this.state.products.map( 
-          product => <div>{product.product_name}</div>
-        )}
-        <NavArrows />
+
+        <table>
+        <tbody>
+          {this.state.products && this.state.products.map( 
+            product => {return(
+              <tr key={product.product_id}>
+                <td>{product.product_id}</td>
+                <td>{product.product_name}</td>
+                <td>{product.product_sku}</td>
+                <td>{product.advertiser_id}</td>
+                <td>{product.advertiser}</td>
+              </tr>
+            );}
+          )}
+        </tbody>
+        </table>
+        
+        <NavArrows
+          getProducts={e => this.getProducts(e)}
+        />
       </div>
     );
   }
