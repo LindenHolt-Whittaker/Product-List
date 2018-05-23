@@ -3,8 +3,8 @@ const request = require('request');
 const targz = require('targz');
 
 const seed_url = 'https://s3.amazonaws.com/rm-rant-interviewing/products.tar.gz';
-const compressed_path = './seed/products.tar.gz';
-const decompressed_path = './seed/products.tar';
+const compressed_path = './seed/data/products.tar.gz';
+const decompressed_path = './seed/data/products.tar';
 
 request(seed_url, (error, response, body) => {
     if (error) { console.log('error:', error); }

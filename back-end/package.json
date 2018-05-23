@@ -2,8 +2,8 @@
   "name": "back-end",
   "version": "1.0.0",
   "scripts": {
-    "get-seed": "node get-seed.js",
-    "seed": "node seed.js",
+    "get-seed": "node ./seed/scripts/get-seed.js",
+    "seed": "node ./seed/scripts/seed.js",
     "server": "nodemon server.js"
   },
   "dependencies": {

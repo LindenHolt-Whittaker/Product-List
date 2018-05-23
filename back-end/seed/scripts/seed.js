@@ -24,7 +24,7 @@ const create_advertisers_table = [
 ].join('');
 
 // import advertisers.txt file and convert to an array.
-const ad_text = fs.readFileSync('./seed/products.tar/advertisers.txt').toString('utf-8');
+const ad_text = fs.readFileSync('./seed/data/products.tar/advertisers.txt').toString('utf-8');
 const ads_arr = ad_text.replace(/'/g, '').replace('\n', '').split(", ");
 const ads_data = ads_arr.map((ad, i) => `('${i + 1}', '${ad}')`).join(',');
 
@@ -41,7 +41,7 @@ const create_products_table = [
 ].join('');
 
 // import products.csv file and convert to an array.
-const product_text = fs.readFileSync('./seed/products.tar/products.csv').toString('utf-8');
+const product_text = fs.readFileSync('./seed/data/products.tar/products.csv').toString('utf-8');
 const products_data = parseCSV(product_text);
 
 const insert_products_data = `INSERT INTO products VALUES ${products_data}`;
