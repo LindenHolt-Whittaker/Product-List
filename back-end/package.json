@@ -2,12 +2,15 @@
   "name": "back-end",
   "version": "1.0.0",
   "scripts": {
+    "get-seed": "node get-seed.js",
+    "seed": "node seed.js",
     "server": "nodemon server.js"
   },
   "dependencies": {
-    "csv": "^3.1.0",
     "express": "^4.16.2",
+    "request": "^2.87.0",
     "sqlite3": "^4.0.0",
+    "targz": "^1.0.1",
     "yarn": "^1.6.0"
   },
   "devDependencies": {}

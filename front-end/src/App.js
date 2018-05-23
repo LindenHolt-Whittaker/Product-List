@@ -8,7 +8,8 @@ const productRange = 30;
 
 class App extends Component {
   state = {
-    products: []
+    products: [],
+    loading: true
   };
 
   componentDidMount() {
@@ -31,8 +32,13 @@ class App extends Component {
       break;
     }
 
+    this.setState({ loading: true });
+
     this.getProductsAPI()
-      .then(res => {this.setState({ products: res })})
+      .then(res => {this.setState({
+        products: res,
+        loading: false
+      })})
       .catch(err => console.log(err));
   }
 
@@ -46,29 +52,42 @@ class App extends Component {
   };
   
   render() {
+    const tableLoadingClassName =
+      (this.state.loading) ? 'table-container--loading' : '';
+
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Browse products</h1>
         </header>
 
-        <table>
-        <tbody>
-          {this.state.products && this.state.products.map( 
-            product => {return(
-              <tr key={product.product_id}>
-                <td>{product.product_id}</td>
-                <td>{product.product_name}</td>
-                <td>{product.product_sku}</td>
-                <td>{product.advertiser_id}</td>
-                <td>{product.advertiser}</td>
-              </tr>
-            );}
-          )}
-        </tbody>
-        </table>
-        
+        <div className={`table-container ${tableLoadingClassName}`}>
+          <table>
+            <thead>
+              <th>product_name</th>
+              <th>product_sku</th>
+              <th>product_id</th>
+              <th>advertiser_id</th>
+              <th>advertiser</th>
+            </thead>
+            <tbody>
+              {this.state.products && this.state.products.map( 
+                product => {
+                  return(
+                    <tr key={product.product_id}>
+                      <td>{product.product_name}</td>
+                      <td>{product.product_sku}</td>
+                      <td>{product.product_id}</td>
+                      <td>{product.advertiser_id}</td>
+                      <td>{product.advertiser}</td>
+                    </tr>
+                  );
+                }
+              )}
+            </tbody>
+          </table>
+        </div>
+  
         <NavArrows
           getProducts={e => this.getProducts(e)}
         />
