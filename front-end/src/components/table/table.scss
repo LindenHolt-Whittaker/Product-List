@@ -1,0 +1,33 @@
+.table {
+    &--loading {
+      opacity: 0.4;
+    }
+
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    
+    text-align: left;
+
+    tr {
+      background-color: rgb(245, 245, 245);
+
+      &:nth-child(even) {
+        background-color: rgb(226, 226, 226);
+      }
+    }
+
+    th, td {
+      padding: 4px 12px;
+
+      border-right: rgba(192, 192, 192, 0.4) 8px solid;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    th {
+      border-bottom: rgb(226, 226, 226) 8px solid;
+    }
+  }

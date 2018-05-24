@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import NavArrows from './components/nav-arrows';
+import Table from './components/table/table';
+import NavArrows from './components/nav-arrows/nav-arrows';
+
 import './App.css';
 
 let productRangeStart = 0;
@@ -61,31 +62,11 @@ class App extends Component {
           <h1 className="App-title">Browse products</h1>
         </header>
 
-        <div className={`table-container ${tableLoadingClassName}`}>
-          <table>
-            <thead>
-              <th>product_name</th>
-              <th>product_sku</th>
-              <th>product_id</th>
-              <th>advertiser_id</th>
-              <th>advertiser</th>
-            </thead>
-            <tbody>
-              {this.state.products && this.state.products.map( 
-                product => {
-                  return(
-                    <tr key={product.product_id}>
-                      <td>{product.product_name}</td>
-                      <td>{product.product_sku}</td>
-                      <td>{product.product_id}</td>
-                      <td>{product.advertiser_id}</td>
-                      <td>{product.advertiser}</td>
-                    </tr>
-                  );
-                }
-              )}
-            </tbody>
-          </table>
+        <div className="table-container">
+          <Table
+            products={this.state.products}
+            loading={this.state.loading}
+          />
         </div>
   
         <NavArrows

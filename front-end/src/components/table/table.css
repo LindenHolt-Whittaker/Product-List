@@ -1,0 +1,18 @@
+.table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  text-align: left; }
+  .table--loading {
+    opacity: 0.4; }
+  .table tr {
+    background-color: whitesmoke; }
+    .table tr:nth-child(even) {
+      background-color: #e2e2e2; }
+  .table th, .table td {
+    padding: 4px 12px;
+    border-right: rgba(192, 192, 192, 0.4) 8px solid; }
+    .table th:last-child, .table td:last-child {
+      border-right: none; }
+  .table th {
+    border-bottom: #e2e2e2 8px solid; }

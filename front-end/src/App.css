@@ -15,22 +15,3 @@
 
 .table-container {
   width: 100%; }
-  .table-container--loading {
-    opacity: 0.4; }
-  .table-container table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    text-align: left; }
-    .table-container table tr {
-      background-color: whitesmoke; }
-      .table-container table tr:nth-child(even) {
-        background-color: #e2e2e2; }
-    .table-container table th, .table-container table td {
-      padding: 4px 12px; }
-    .table-container table th {
-      padding-bottom: 8px; }
-    .table-container table td {
-      border-right: rgba(192, 192, 192, 0.4) 8px solid; }
-      .table-container table td:last-child {
-        border-right: none; }

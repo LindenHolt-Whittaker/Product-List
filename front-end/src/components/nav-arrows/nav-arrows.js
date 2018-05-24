@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './nav-arrows.css';
 
-class NavArrows extends Component {
+export default class NavArrows extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   onClick(backOrForward) {
     this.props.getProducts(backOrForward);
   }
 
   render() {
     return (
-      <footer className="nav--wrapper">
+      <div className="nav--wrapper">
         <span
-          className="nav__arrow"
+          className="nav__arrow left"
           onClick={e => this.onClick('left')}
         >
           {'<'}
         </span>
         <span
-          className="nav__arrow"
+          className="nav__arrow right"
           onClick={e => this.onClick('right')}        
         >
           {'>'}
         </span>
-      </footer>
+      </div>
     );
   }
 }
 
-export default NavArrows;
+NavArrows.propTypes = {
+  getProducts: PropTypes.func
+};
