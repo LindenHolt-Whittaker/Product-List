@@ -8,7 +8,7 @@ const decompressed_path = './seed/data/products.tar';
 
 request(seed_url, (error, response, body) => {
     if (error) { console.log('error:', error); }
-    if (response.statusCode === 200) { console.log('Downloaded products.tar.gz'); }
+    if (response.statusCode === 200) { console.log('Downloaded products.tar.gz '); }
 
     targz.decompress({
         src: compressed_path,
